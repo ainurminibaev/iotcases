@@ -6,6 +6,7 @@ import ru.kpfu.itis.form.UserForm;
 import ru.kpfu.itis.model.SecList;
 import ru.kpfu.itis.model.User;
 import ru.kpfu.itis.model.enums.Role;
+import ru.kpfu.itis.model.helper.ChangingUser;
 import ru.kpfu.itis.repository.SecListRepository;
 import ru.kpfu.itis.repository.UserRepository;
 import ru.kpfu.itis.service.UserService;
@@ -31,12 +32,40 @@ public class UserServiceImpl implements UserService {
         userRepository.saveUser(user);
         List<SecList> secLists = SecListUtil.transformToList(user.getId(), userForm.getDevice());
         secListRepository.save(secLists);
-
     }
 
     @Override
     public void updateUser(UserForm userForm) {
 
+    }
+
+    @Override
+    public User checkPin(String pin) {
+        Long id = Long.parseLong(pin.substring(0, 3));
+        User user = userRepository.searchUserById(id);
+        if (user == null) {
+            return null;
+        }
+        String pass = pin.substring(3);
+        if (!pass.equals(user.getPassword())) {
+            return null;
+        }
+        return user;
+    }
+
+    @Override
+    public User updateUser(ChangingUser changingUser) {
+        User user = checkPin(changingUser.getPin());
+        if (user == null) {
+            return null;
+        }
+        if (!"".equals(changingUser.getName())) {
+            user.setName(changingUser.getName());
+        }
+        if (!"".equals(changingUser.getPassword())) {
+            user.setPassword(changingUser.getPassword());
+        }
+        return userRepository.updateUser(user);
     }
 
     @Override

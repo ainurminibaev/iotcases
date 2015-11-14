@@ -1,19 +1,20 @@
 package ru.kpfu.itis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.model.Device;
 import ru.kpfu.itis.model.User;
+import ru.kpfu.itis.model.enums.Role;
 import ru.kpfu.itis.model.helper.*;
 import ru.kpfu.itis.repository.DeviceRepository;
 import ru.kpfu.itis.repository.SecListRepository;
 import ru.kpfu.itis.repository.UserRepository;
+import ru.kpfu.itis.service.DeviceService;
+import ru.kpfu.itis.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by vlad on 14.11.15.
@@ -28,9 +29,15 @@ public class ApiController {
     UserRepository userRepository;
 
     @Autowired
+    UserService userService;
+
+    @Autowired
+    DeviceService deviceService;
+
+    @Autowired
     DeviceRepository deviceRepository;
 
-//    TODO НЕ УДАЛЯЙТЕ ПОКА!
+//    НЕ УДАЛЯЙТЕ ПОКА!
 //    @ResponseBody
 //    @RequestMapping(value = "get/accesses")
 //    public List<Device> getDevice(@RequestParam("uid") Long id) {
@@ -47,30 +54,16 @@ public class ApiController {
     @ResponseBody
     @RequestMapping(value = "get/accesses")
     public UserJson getUserDevices(@RequestParam("pin") String pin) {
-        User user = checkPin(pin);
+        User user = userService.checkPin(pin);
         List<Device> devices = secListRepository.getDevicesByUserId(user.getId());
         return new UserJson(user.getId(), user.getName(), devices);
-    }
-
-    private User checkPin(String pin) {
-        Long id = Long.parseLong(pin.substring(0, 3));
-        User user = userRepository.searchUserById(id);
-        if (user == null) {
-            return null;
-        }
-        String pass = pin.substring(3);
-        if (!pass.equals(user.getPassword())) {
-            return null;
-        }
-        return user;
     }
 
     @ResponseBody
     @RequestMapping(value = "/api/data")
     public DataJson getData(@RequestParam("password") String pin) {
-        User user = checkPin(pin);
-        //TODO check is admin
-        if (user == null) {
+        User user = userService.checkPin(pin);
+        if (user == null || !user.getRole().equals(Role.ROLE_ADMIN)) {
             return null;
         }
         List<Device> devices = deviceRepository.findAll();
@@ -93,34 +86,14 @@ public class ApiController {
         }
     }
 
-    @RequestMapping(value = "/api/devices", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void saveDevices(@RequestBody RandomDevicesList devicesList) {
-        //TODO to service and add transactional
-        List<Device> devices = devicesList.getDevices()
-                .stream()
-                .map(Device::new)
-                .map(it -> {
-                    it.setName("Device " + it.getId());
-                    return it;
-                })
-                .collect(Collectors.toList());
-        deviceRepository.save(devices);
+    @RequestMapping(value = "/api/devices", method = RequestMethod.POST)
+    private void saveDevices(@RequestBody RandomDevicesList devicesList) {
+        deviceService.saveDevices(devicesList);
     }
 
-    @RequestMapping(value = "/api/user/change", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void editUser(@RequestBody ChangingUser changingUser) {
-        //TODO to service and add transactional
-        User user = checkPin(changingUser.getPin());
-        if (user == null) {
-            return;
-        }
-        if (!"".equals(changingUser.getName())) {
-            user.setName(changingUser.getName());
-        }
-        if (!"".equals(changingUser.getPassword())) {
-            user.setPassword(changingUser.getPassword());
-        }
-        userRepository.updateUser(user);
+    @RequestMapping(value = "/api/user/change", method = RequestMethod.POST)
+    private void editUser(@RequestBody ChangingUser changingUser) {
+        userService.updateUser(changingUser);
     }
 
 
