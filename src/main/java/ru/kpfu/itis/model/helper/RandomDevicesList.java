@@ -1,5 +1,8 @@
 package ru.kpfu.itis.model.helper;
 
+import ru.kpfu.itis.model.Device;
+
+import java.rmi.server.UID;
 import java.util.List;
 
 /**
@@ -7,19 +10,26 @@ import java.util.List;
  */
 public class RandomDevicesList {
 
-    private List<Long> devices;
+    private List<Device> devices;
 
     public RandomDevicesList() {
     }
 
-    public List<Long> getDevices() {
+    public RandomDevicesList(List<Device> devices) {
+        this.devices = devices;
+    }
+
+    public List<Device> getDevices() {
         return devices;
     }
 
-    public void setDevices(List<Long> devices) {
+    public void setDevices(List<Device> devices) {
         this.devices = devices;
     }
 
     public void generateNames() {
+        for (int i = 0; i < devices.size(); i++) {
+            devices.get(i).setName("Generated Device " + new UID().toString());
+        }
     }
 }

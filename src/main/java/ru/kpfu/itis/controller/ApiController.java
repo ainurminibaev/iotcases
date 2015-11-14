@@ -93,6 +93,7 @@ public class ApiController {
 
     @RequestMapping(value = "/user/change", method = RequestMethod.POST)
     private void editUser(@RequestBody ChangingUser changingUser) {
+        //TODO to service and add transactional
         User user = checkPin(changingUser.getPin());
         if (user == null) {
             return;

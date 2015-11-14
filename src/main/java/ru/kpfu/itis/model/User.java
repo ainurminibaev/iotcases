@@ -21,7 +21,12 @@ public class User {
     private String password;
 
     public Long getId() {
-        return id;
+        switch (("" + id).length()) {
+            case 1: return Long.parseLong("00" + id);
+            case 2: return Long.parseLong("0" + id);
+            case 3: return id;
+            default: return null;
+        }
     }
 
     public void setId(Long id) {
