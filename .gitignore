@@ -1,5 +1,5 @@
 target
 .idea
 *.iml
-iot-*.properties
+iotcases-*.properties
 .DS_Store
