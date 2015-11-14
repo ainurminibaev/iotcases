@@ -2,7 +2,6 @@ package ru.kpfu.itis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.model.Device;
 import ru.kpfu.itis.model.User;
@@ -15,7 +14,6 @@ import ru.kpfu.itis.repository.SecListRepository;
 import ru.kpfu.itis.repository.UserRepository;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by vlad on 14.11.15.
@@ -73,6 +71,7 @@ public class ApiController {
     private void saveDevices(@RequestBody RandomDevicesList devicesList) {
         devicesList.generateNames();
         deviceRepository.save(devicesList.getDevices());
+        System.out.println("OK");
     }
 
 }
