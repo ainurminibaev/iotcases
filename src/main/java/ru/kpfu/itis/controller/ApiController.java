@@ -45,7 +45,7 @@ public class ApiController {
 
     @ResponseBody
     @RequestMapping(value = "get/accesses")
-    public UserJson getUserDevices(@RequestParam("uid") String pin) {
+    public UserJson getUserDevices(@RequestParam("pin") String pin) {
         User user = checkPin(pin);
         List<Device> devices = secListRepository.getDevicesByUserId(user.getId());
         return new UserJson(user.getId(), user.getName(), devices);
