@@ -34,9 +34,9 @@ public class ApiController {
     DeviceRepository deviceRepository;
 
     @ResponseBody
-    @RequestMapping(value = "/device")
-    public Device getDevice(@RequestParam("id") Long id) {
-        return secListRepository.getDevice(id);
+    @RequestMapping(value = "/devices")
+    public List<Device> getDevice(@RequestParam("id") Long id) {
+        return secListRepository.getDevicesByUserId(id);
     }
 
     private User checkPin(String pin) {
@@ -53,18 +53,18 @@ public class ApiController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/user/devices")
-    public UserJson getUserDevices(@RequestParam("key") String pin) {
+    @RequestMapping(value = "/user")
+    public UserJson getUserDevices(@RequestParam("pin") String pin) {
         User user = checkPin(pin);
         List<Device> devices = secListRepository.getDevicesByUserId(user.getId());
         return new UserJson(user.getId(), user.getName(), devices);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/device/users")
+    @RequestMapping(value = "/device")
     public DeviceJson getDeviceUsers(@RequestParam("id") Long id) {
-        List<User> users = secListRepository.getDeviceUsers(id);
-        return new DeviceJson(id, secListRepository.getDevice(id).getName(), users);
+        List<Long> usersId = secListRepository.getDeviceUsersId(id);
+        return new DeviceJson(id, secListRepository.getDevice(id).getName(), usersId);
     }
 
     @ResponseBody

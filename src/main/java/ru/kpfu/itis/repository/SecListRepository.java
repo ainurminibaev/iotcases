@@ -20,4 +20,7 @@ public interface SecListRepository extends JpaRepository<SecList, Long>{
 
     @Query("select u from User u where u.id in (select sl.userId from SecList sl where sl.deviceId = ?1)")
     List<User> getDeviceUsers(Long id);
+
+    @Query("select u.id from User u where u.id in (select sl.userId from SecList sl where sl.deviceId = ?1)")
+    List<Long> getDeviceUsersId(Long id);
 }
