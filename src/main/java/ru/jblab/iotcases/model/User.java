@@ -1,51 +1,31 @@
 package ru.jblab.iotcases.model;
 
 
-import ru.jblab.iotcases.model.enums.UserGroup;
+import ru.jblab.iotcases.model.enums.Role;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
-/**
- * Created on 26.08.2014.
- */
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
-    private static final long serialVersionUID = 19983341017L;
+public class User {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
-    private String login;
-
-    private String password;
-
-    private String salt;
 
     private String name;
 
-
     @Enumerated(EnumType.ORDINAL)
-    @Column(name = "user_group")
-    private UserGroup group;
+    private Role role;
 
+    private String password;
 
-    public User() {
-
+    public Long getId() {
+        return id;
     }
 
-    public User(Long id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getName() {
@@ -56,20 +36,12 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public UserGroup getGroup() {
-        return group;
+    public Role getRole() {
+        return role;
     }
 
-    public void setGroup(UserGroup group) {
-        this.group = group;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getPassword() {
@@ -79,31 +51,4 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-
-        User user = (User) o;
-
-        if (id != null ? !id.equals(user.id) : user.id != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
-    }
-
 }
