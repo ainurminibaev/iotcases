@@ -10,7 +10,6 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import ru.jblab.iotcases.util.DataSourceAdapter;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -55,10 +54,4 @@ public class PersistenceConfig {
         return transactionManager;
     }
 
-    @Bean
-    public DataSourceAdapter dataSourceAdapter(){
-        DataSourceAdapter dataSourceAdapter = new DataSourceAdapter();
-        dataSourceAdapter.setDataSource(dataSource);
-        return dataSourceAdapter;
-    }
 }
