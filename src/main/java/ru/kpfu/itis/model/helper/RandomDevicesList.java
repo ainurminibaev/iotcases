@@ -12,6 +12,13 @@ public class RandomDevicesList {
 
     private List<Device> devices;
 
+    public RandomDevicesList() {
+    }
+
+    public RandomDevicesList(List<Device> devices) {
+        this.devices = devices;
+    }
+
     public List<Device> getDevices() {
         return devices;
     }

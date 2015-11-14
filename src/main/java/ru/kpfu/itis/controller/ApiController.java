@@ -9,6 +9,7 @@ import ru.kpfu.itis.model.helper.DeviceJson;
 import ru.kpfu.itis.model.helper.EmptyJson;
 import ru.kpfu.itis.model.helper.RandomDevicesList;
 import ru.kpfu.itis.model.helper.UserJson;
+import ru.kpfu.itis.model.helper.ChangingUser;
 import ru.kpfu.itis.repository.DeviceRepository;
 import ru.kpfu.itis.repository.SecListRepository;
 import ru.kpfu.itis.repository.UserRepository;
@@ -37,17 +38,25 @@ public class ApiController {
         return secListRepository.getDevice(id);
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/user/devices")
-    public UserJson getUserDevices(@RequestParam("key") String idPass) {
-        Long id = Long.parseLong(idPass.substring(0, 3));
+    private User checkPin(String pin) {
+        Long id = Long.parseLong(pin.substring(0, 3));
         User user = userRepository.searchUserById(id);
-        String pass = idPass.substring(3);
+        if (user == null) {
+            return null;
+        }
+        String pass = pin.substring(3);
         if (!pass.equals(user.getPassword())) {
             return null;
         }
-        List<Device> devices = secListRepository.getDevicesByUserId(id);
-        return new UserJson(id, user.getName(), devices);
+        return user;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/user/devices")
+    public UserJson getUserDevices(@RequestParam("key") String pin) {
+        User user = checkPin(pin);
+        List<Device> devices = secListRepository.getDevicesByUserId(user.getId());
+        return new UserJson(user.getId(), user.getName(), devices);
     }
 
     @ResponseBody
@@ -71,7 +80,22 @@ public class ApiController {
     private void saveDevices(@RequestBody RandomDevicesList devicesList) {
         devicesList.generateNames();
         deviceRepository.save(devicesList.getDevices());
-        System.out.println("OK");
     }
+
+    @RequestMapping(value = "/user/change", method = RequestMethod.POST)
+    private void editUser(@RequestBody ChangingUser changingUser) {
+        User user = checkPin(changingUser.getPin());
+        if (user == null) {
+            return;
+        }
+        if (!changingUser.getName().equals("")){
+            user.setName(changingUser.getName());
+        }
+        if (!changingUser.getPassword().equals("")){
+            user.setPassword(changingUser.getPassword());
+        }
+        userRepository.updateUser(user);
+    }
+
 
 }
