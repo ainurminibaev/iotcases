@@ -1,14 +1,13 @@
 package ru.kpfu.itis.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "device")
 public class Device {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
