@@ -1,4 +1,4 @@
 jdbc.driverClassName=org.postgresql.Driver
-jdbc.url=jdbc:postgresql://localhost:5432/iot-cases
+jdbc.url=jdbc:postgresql://localhost:5432/iotcases
 jdbc.username=postgres
 jdbc.password=postgres
