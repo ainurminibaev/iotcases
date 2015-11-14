@@ -16,6 +16,9 @@ public class Device {
         this.id = id;
     }
 
+    public Device() {
+    }
+
     public Long getId() {
         return id;
     }

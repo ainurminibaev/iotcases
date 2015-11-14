@@ -1,5 +1,6 @@
 package ru.kpfu.itis.model.helper;
 
+import org.codehaus.jackson.annotate.JsonProperty;
 import ru.kpfu.itis.model.User;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
  */
 public class DeviceJson {
 
+    @JsonProperty("device_id")
     private Long deviceId;
 
     private String deviceName;
