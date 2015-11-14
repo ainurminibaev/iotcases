@@ -29,6 +29,9 @@ public class UserServiceImpl implements UserService {
     public void saveUser(UserForm userForm) {
         User user = UserFromToUser.transformUser(userForm);
         userRepository.saveUser(user);
+
+        user.getId();
+
         List<SecList> secLists = SecListUtil.transformToList(user.getId(), userForm.getDevice());
         if (secLists != null) {
             secListRepository.save(secLists);
