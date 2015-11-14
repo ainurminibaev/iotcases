@@ -9,24 +9,13 @@ import java.util.List;
  */
 public class UserJson {
 
-    private Long id;
-
     private String name;
 
     private List<Device> devices;
 
     public UserJson(Long id, String name, List<Device> devices) {
-        this.id = id;
         this.name = name;
         this.devices = devices;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

@@ -15,33 +15,36 @@ public class DeviceJson {
 
     private List<Long> users;
 
-    public DeviceJson(Long deviceId, String deviceName, List<Long> deviceUsersId) {
-        this.id = deviceId;
-        this.name = deviceName;
-        this.users = deviceUsersId;
+    public DeviceJson() {
     }
 
-    public Long getDeviceId() {
+    public DeviceJson(Long id, String name, List<Long> users) {
+        this.id = id;
+        this.name = name;
+        this.users = users;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setDeviceId(Long deviceId) {
-        this.id = deviceId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getDeviceName() {
+    public String getName() {
         return name;
     }
 
-    public void setDeviceName(String deviceName) {
-        this.name = deviceName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public List<Long> getDeviceUsers() {
+    public List<Long> getUsers() {
         return users;
     }
 
-    public void setDeviceUsers(List<Long> deviceUsersId) {
-        this.users = deviceUsersId;
+    public void setUsers(List<Long> users) {
+        this.users = users;
     }
 }
