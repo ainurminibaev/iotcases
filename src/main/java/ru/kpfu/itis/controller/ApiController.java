@@ -68,10 +68,11 @@ public class ApiController {
     @RequestMapping(value = "/api/data")
     public DataJson getData(@RequestParam("password") String pin) {
         User user = checkPin(pin);
+        //TODO check is admin
         if (user == null) {
             return null;
         }
-        List<Device> devices = secListRepository.getDevicesByUserId(user.getId());
+        List<Device> devices = deviceRepository.findAll();
         List<DeviceJson> devicesJson = new ArrayList<>(devices.size());
         for(Device d : devices) {
             devicesJson.add(new DeviceJson(d.getId(), d.getName(), secListRepository.getDeviceUsersId(d.getId())));
