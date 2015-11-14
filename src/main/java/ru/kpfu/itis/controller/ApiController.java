@@ -74,7 +74,7 @@ public class ApiController {
         }
         List<Device> devices = deviceRepository.findAll();
         List<DeviceJson> devicesJson = new ArrayList<>(devices.size());
-        for(Device d : devices) {
+        for (Device d : devices) {
             devicesJson.add(new DeviceJson(d.getId(), d.getName(), secListRepository.getDeviceUsersId(d.getId())));
         }
         List<User> users = userRepository.getAllUser();
@@ -92,7 +92,7 @@ public class ApiController {
         }
     }
 
-    @RequestMapping(value = "/api/devices", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/devices", method = RequestMethod.POST, headers = "content-type=application/json,application/xml")
     private void saveDevices(@RequestBody RandomDevicesList devicesList) {
         //TODO to service and add transactional
         List<Device> devices = devicesList.getDevices()
@@ -106,7 +106,7 @@ public class ApiController {
         deviceRepository.save(devices);
     }
 
-    @RequestMapping(value = "/api/user/change", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/user/change", method = RequestMethod.POST, headers = "content-type=application/json,application/xml")
     private void editUser(@RequestBody ChangingUser changingUser) {
         //TODO to service and add transactional
         User user = checkPin(changingUser.getPin());
