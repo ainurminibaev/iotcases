@@ -12,6 +12,10 @@ public class Device {
 
     private String name;
 
+    public Device(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
@@ -28,12 +32,13 @@ public class Device {
     public void setName(String name) {
         this.name = name;
     }
+
     @Override
     public boolean equals(Object obj) {
         Device device = (Device) obj;
-        if(device.getId() == this.getId()){
+        if (device.getId() == this.getId()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
