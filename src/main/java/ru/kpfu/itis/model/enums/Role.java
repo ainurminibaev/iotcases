@@ -1,4 +1,4 @@
-package ru.jblab.iotcases.model.enums;
+package ru.kpfu.itis.model.enums;
 
 
 public enum Role {

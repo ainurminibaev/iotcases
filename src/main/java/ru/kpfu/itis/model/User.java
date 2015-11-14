@@ -1,7 +1,7 @@
-package ru.jblab.iotcases.model;
+package ru.kpfu.itis.model;
 
 
-import ru.jblab.iotcases.model.enums.Role;
+import ru.kpfu.itis.model.enums.Role;
 
 import javax.persistence.*;
 

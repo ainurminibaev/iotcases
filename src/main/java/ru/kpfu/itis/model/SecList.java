@@ -1,4 +1,4 @@
-package ru.jblab.iotcases.model;
+package ru.kpfu.itis.model;
 
 import javax.persistence.*;
 
