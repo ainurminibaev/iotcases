@@ -3,18 +3,18 @@ package ru.kpfu.itis.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.model.Device;
 import ru.kpfu.itis.model.User;
 import ru.kpfu.itis.model.helper.DeviceJson;
+import ru.kpfu.itis.model.helper.EmptyJson;
 import ru.kpfu.itis.model.helper.UserJson;
+import ru.kpfu.itis.repository.DeviceRepository;
 import ru.kpfu.itis.repository.SecListRepository;
 import ru.kpfu.itis.repository.UserRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by vlad on 14.11.15.
@@ -28,6 +28,9 @@ public class ApiController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    DeviceRepository deviceRepository;
 
     @ResponseBody
     @RequestMapping(value = "/device")
@@ -54,5 +57,20 @@ public class ApiController {
         List<User> users = secListRepository.getDeviceUsers(id);
         return new DeviceJson(id, secListRepository.getDevice(id).getName(), users);
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/empty")
+    public Object checkDevicesEmpty() {
+        if (deviceRepository.findAll().isEmpty()) {
+            return new EmptyJson(true);
+        } else {
+            return new EmptyJson(false);
+        }
+    }
+
+//    @RequestMapping(value = "/devices", method = RequestMethod.POST)
+//    private Object saveDevices(@RequestBody ) {
+//
+//    }
 
 }
