@@ -25,7 +25,17 @@ public class Device {
         return name;
     }
 
+
     public void setName(String name) {
         this.name = name;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        Device device = (Device) obj;
+        if(device.getId() == this.getId()){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

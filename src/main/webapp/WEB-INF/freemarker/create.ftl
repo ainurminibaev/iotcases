@@ -16,6 +16,7 @@
 <#list devices as device>
     <input type="checkbox" name="device" value="${device.id}"> ${device.name}
 </#list>
+
     <br>
     <input type="submit" value="Go">
 </form>

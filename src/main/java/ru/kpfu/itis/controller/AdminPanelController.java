@@ -9,8 +9,11 @@ import ru.kpfu.itis.model.Device;
 import ru.kpfu.itis.repository.DeviceRepository;
 import ru.kpfu.itis.repository.SecListRepository;
 import ru.kpfu.itis.service.UserService;
+import ru.kpfu.itis.util.DeviceCheckForm;
+import ru.kpfu.itis.util.DeviceCheckbox;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class AdminPanelController {
@@ -52,9 +55,10 @@ public class AdminPanelController {
     @RequestMapping(value = "/update/{userId}", method = RequestMethod.GET)
     public String getUpdateUserPage(@PathVariable("userId") Long userId, Model map) {
         List<Device> devices = deviceRepository.findAll();
-        map.addAttribute("devices", devices);
+        List<DeviceCheckForm> device = DeviceCheckbox.getDeviceEditForm(devices,
+                secListRepository.getDevicesByUserId(userId));
+        map.addAttribute("devices", device);
         map.addAttribute("user", userService.searchUserById(userId));
-        map.addAttribute("devicesUser", secListRepository.getDevicesByUserId(userId));
         return "update";
     }
 
