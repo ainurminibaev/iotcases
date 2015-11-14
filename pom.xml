@@ -22,7 +22,7 @@
         <profile>
             <id>ss-server</id>
             <properties>
-                <tomcatHome>/root/subscribe-site/tomcat</tomcatHome>
+                <tomcatHome>/home/azureuser/tomcat</tomcatHome>
             </properties>
         </profile>
 
