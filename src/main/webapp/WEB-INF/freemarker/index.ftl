@@ -5,45 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="/ico/favicon.png">
+    <link rel="shortcut icon" href="/resources/ico/favicon.png">
 
     <title>Smart Security Cases</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom bootstrap styles -->
-    <link href="/css/overwrite.css" rel="stylesheet">
+    <link href="/resources/css/overwrite.css" rel="stylesheet">
 
 	<!-- font awesome -->
-	<link href="/css/font-awesome.css" rel="stylesheet">
+	<link href="/resources/css/font-awesome.css" rel="stylesheet">
     <!--[if lt IE 9]>
-	  <link href="/css/font-awesome-ie7.css" rel="stylesheet">
+	  <link href="/resources/css/font-awesome-ie7.css" rel="stylesheet">
 	<![endif]-->
-	<link href="/css/font-awesome-set.css" rel="stylesheet">
+	<link href="/resources/css/font-awesome-set.css" rel="stylesheet">
 
     <!-- Flexslider -->
-    <link href="/css/flexslider.css" rel="stylesheet">
+    <link href="/resources/css/flexslider.css" rel="stylesheet">
 
     <!-- Nivo -->
-	<link href="/css/nivo-slider.css" rel="stylesheet">
+	<link href="/resources/css/nivo-slider.css" rel="stylesheet">
 
     <!-- prettyPhoto -->
-	<link href="/css/prettyPhoto.css" rel="stylesheet">
+	<link href="/resources/css/prettyPhoto.css" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="/resources/css/style.css" rel="stylesheet">
 
 	<!-- Font -->
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 
 	<!-- Theme skin -->
-	<link href="skin/default.css" rel="stylesheet" />
+	<link href="/resources/skin/default.css" rel="stylesheet" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="/js/html5shiv.js"></script>
-      <script src="/js/respond.min.js"></script>
+      <script src="/resources/js/html5shiv.js"></script>
+      <script src="/resources/js/respond.min.js"></script>
     <![endif]-->
 
   </head>
@@ -55,7 +55,7 @@
 	<header>
 		<div class="navbar navbar-default">
 			<div class="navbar-header">
-				<a href="#" class="logo"><img src="img/logo.png" alt="" /></a>
+				<a href="#" class="logo"><img src="/resources/img/logo.png" alt="" /></a>
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
@@ -163,12 +163,12 @@
 					<div class="col-md-8 col-md-offset-2">
 						<div class="slider-wrapper">
 							<div id="nivo-slider" class="nivoSlider">
-								<img src="img/slider/img1.png" class="img-responsive" alt="" />
-								<img src="img/slider/img2.png" class="img-responsive" alt="" />
-								<img src="img/slider/img3.png" class="img-responsive" alt="" />
+								<img src="/resources/img/slider/img1.png" class="img-responsive" alt="" />
+								<img src="/resources/img/slider/img2.png" class="img-responsive" alt="" />
+								<img src="/resources/img/slider/img3.png" class="img-responsive" alt="" />
 							</div>
 						</div>
-						<img src="img/ipad.png" class="img-responsive slider-bg" alt="" />
+						<img src="/resources/img/ipad.png" class="img-responsive slider-bg" alt="" />
 					</div>
 				</div>
 			</div>
@@ -266,7 +266,7 @@
 				<ul class="slides">
 					<li>
 						<div class="image-cap">
-							<img src="img/features/img1.png" alt="" />
+							<img src="/resources/img/features/img1.png" alt="" />
 						</div>
 						<div class="text-cap">
 							<h4>Looks great on any device</h4>
@@ -275,11 +275,11 @@
 							</p>
 							<a href="#" class="text-link">Learn more</a>
 						</div>
-						<img src="img/features/bg.jpg" alt="" />
+						<img src="/resources/img/features/bg.jpg" alt="" />
 					</li>
 					<li>
 						<div class="image-cap">
-							<img src="img/features/img3.png" alt="" />
+							<img src="/resources/img/features/img3.png" alt="" />
 						</div>
 						<div class="text-cap">
 							<h4>Super flat and modern design</h4>
@@ -288,11 +288,11 @@
 							</p>
 							<a href="#" class="text-link">Learn more</a>
 						</div>
-						<img src="img/features/bg1.jpg" alt="" />
+						<img src="/resources/img/features/bg1.jpg" alt="" />
 					</li>
 					<li>
 						<div class="image-cap">
-							<img src="img/features/img2.png" alt="" />
+							<img src="/resources/img/features/img2.png" alt="" />
 						</div>
 						<div class="text-cap">
 							<h4>Suitable for web maketing</h4>
@@ -301,11 +301,11 @@
 							</p>
 							<a href="#" class="text-link">Learn more</a>
 						</div>
-						<img src="img/features/bg2.jpg" alt="" />
+						<img src="/resources/img/features/bg2.jpg" alt="" />
 					</li>
 					<li>
 						<div class="image-cap">
-							<img src="img/features/img4.png" alt="" />
+							<img src="/resources/img/features/img4.png" alt="" />
 						</div>
 						<div class="text-cap">
 							<h4>Very easy to customize</h4>
@@ -314,7 +314,7 @@
 							</p>
 							<a href="#" class="text-link">Learn more</a>
 						</div>
-						<img src="img/features/bg3.jpg" alt="" />
+						<img src="/resources/img/features/bg3.jpg" alt="" />
 					</li>
 				</ul>
 			</div>
@@ -342,54 +342,54 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/js/jquery.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery-easing-1.3.js"></script>
+    <script src="/resources/js/jquery.js"></script>
+	<script src="/resources/js/bootstrap.min.js"></script>
+    <script src="/resources/js/jquery-easing-1.3.js"></script>
 
 	<!-- Fixed navigation -->
-	<script src="/js/navigation/waypoints.min.js"></script>
-	<script src="/js/navigation/jquery.smooth-scroll.js"></script>
-	<script src="/js/navigation/navbar.js"></script>
+	<script src="/resources/js/navigation/waypoints.min.js"></script>
+	<script src="/resources/js/navigation/jquery.smooth-scroll.js"></script>
+	<script src="/resources/js/navigation/navbar.js"></script>
 
 	<!-- JavaScript cbpscroller -->
-	<script src="/js/cbpscroller/modernizr.custom.js"></script>
-	<script src="/js/cbpscroller/classie.js"></script>
-	<script src="/js/cbpscroller/cbpScroller.js"></script>
+	<script src="/resources/js/cbpscroller/modernizr.custom.js"></script>
+	<script src="/resources/js/cbpscroller/classie.js"></script>
+	<script src="/resources/js/cbpscroller/cbpScroller.js"></script>
 
 	<!-- JavaScript jcarousellite -->
-	<script src="/js/jcarousellite/jcarousellite_1.0.1c4.js"></script>
-	<script src="/js/jcarousellite/setting.js"></script>
+	<script src="/resources/js/jcarousellite/jcarousellite_1.0.1c4.js"></script>
+	<script src="/resources/js/jcarousellite/setting.js"></script>
 
 	<!-- Ticker -->
-	<script src="/js/ticker/ticker.js"></script>
-	<script src="/js/ticker/setting.js"></script>
+	<script src="/resources/js/ticker/ticker.js"></script>
+	<script src="/resources/js/ticker/setting.js"></script>
 
 	<!-- prettyPhoto -->
-	<script src="/js/prettyPhoto/jquery.prettyPhoto.js"></script>
-	<script src="/js/prettyPhoto/setting.js"></script>
+	<script src="/resources/js/prettyPhoto/jquery.prettyPhoto.js"></script>
+	<script src="/resources/js/prettyPhoto/setting.js"></script>
 
 	<!-- Filter -->
-	<script src="/js/filter/jquery.quicksand.js"></script>
-	<script src="/js/filter/setting.js"></script>
+	<script src="/resources/js/filter/jquery.quicksand.js"></script>
+	<script src="/resources/js/filter/setting.js"></script>
 
 	<!-- Flexslider -->
-	<script src="/js/flexslider/jquery.flexslider.js"></script>
-    <script src="/js/flexslider/setting.js"></script>
+	<script src="/resources/js/flexslider/jquery.flexslider.js"></script>
+    <script src="/resources/js/flexslider/setting.js"></script>
 
 	<!-- Nivo slider -->
-	<script src="/js/nivo/jquery.nivo.slider.js"></script>
-	<script src="/js/nivo/setting.js"></script>
+	<script src="/resources/js/nivo/jquery.nivo.slider.js"></script>
+	<script src="/resources/js/nivo/setting.js"></script>
 
 	<!-- Contact validation js -->
-    <script src="/js/validation.js"></script>
+    <script src="/resources/js/validation.js"></script>
 
 	<!-- JavaScript totop -->
-	<script src="/js/totop/jquery.ui.totop.js"></script>
-	<script src="/js/totop/setting.js"></script>
+	<script src="/resources/js/totop/jquery.ui.totop.js"></script>
+	<script src="/resources/js/totop/setting.js"></script>
 
 	<!-- Customn javascript -->
-	<script src="/js/custom.js"></script>
-	<script src="/js/header.js"></script>
+	<script src="/resources/js/custom.js"></script>
+	<script src="/resources/js/header.js"></script>
 
   </body>
 </html>
