@@ -1,6 +1,7 @@
 package ru.kpfu.itis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.model.Device;
@@ -86,13 +87,13 @@ public class ApiController {
         }
     }
 
-    @RequestMapping(value = "/api/devices", method = RequestMethod.POST)
-    private void saveDevices(@RequestBody RandomDevicesList devicesList) {
+    @RequestMapping(value = "/api/devices", method = RequestMethod.POST , consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void saveDevices(@RequestBody RandomDevicesList devicesList) {
         deviceService.saveDevices(devicesList);
     }
 
-    @RequestMapping(value = "/api/user/change", method = RequestMethod.POST)
-    private void editUser(@RequestBody ChangingUser changingUser) {
+    @RequestMapping(value = "/api/user/change", method = RequestMethod.POST , consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void editUser(@RequestBody ChangingUser changingUser) {
         userService.updateUser(changingUser);
     }
 
