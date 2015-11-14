@@ -392,6 +392,7 @@
 
 <!-- Customn javascript -->
 <script src="/resources/js/custom.js"></script>
+<script src="/resources/js/header.js"></script>
 
 </body>
 </html>
