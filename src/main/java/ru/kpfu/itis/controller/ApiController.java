@@ -79,7 +79,7 @@ public class ApiController {
 
     @RequestMapping(value = "/devices", method = RequestMethod.POST)
     private void saveDevices(@RequestBody RandomDevicesList devicesList) {
-       //TODO to service and add transactional
+        //TODO to service and add transactional
         List<Device> devices = devicesList.getDevices()
                 .stream()
                 .map(Device::new)
@@ -98,10 +98,10 @@ public class ApiController {
         if (user == null) {
             return;
         }
-        if (!changingUser.getName().equals("")) {
+        if (!"".equals(changingUser.getName())) {
             user.setName(changingUser.getName());
         }
-        if (!changingUser.getPassword().equals("")) {
+        if (!"".equals(changingUser.getPassword())) {
             user.setPassword(changingUser.getPassword());
         }
         userRepository.updateUser(user);
