@@ -52,7 +52,7 @@ public class ApiController {
     @RequestMapping(value = "/device/users")
     public DeviceJson getDeviceUsers(@RequestParam("id") Long id) {
         List<User> users = secListRepository.getDeviceUsers(id);
-        return new DeviceJson(id, "<device_name>", users);
+        return new DeviceJson(id, secListRepository.getDevice(id).getName(), users);
     }
 
 }
