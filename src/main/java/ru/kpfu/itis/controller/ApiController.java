@@ -15,6 +15,7 @@ import ru.kpfu.itis.repository.SecListRepository;
 import ru.kpfu.itis.repository.UserRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by vlad on 14.11.15.
@@ -78,8 +79,16 @@ public class ApiController {
 
     @RequestMapping(value = "/devices", method = RequestMethod.POST)
     private void saveDevices(@RequestBody RandomDevicesList devicesList) {
-        devicesList.generateNames();
-        deviceRepository.save(devicesList.getDevices());
+       //TODO to service and add transactional
+        List<Device> devices = devicesList.getDevices()
+                .stream()
+                .map(Device::new)
+                .map(it -> {
+                    it.setName("Device " + it.getId());
+                    return it;
+                })
+                .collect(Collectors.toList());
+        deviceRepository.save(devices);
     }
 
     @RequestMapping(value = "/user/change", method = RequestMethod.POST)
@@ -88,10 +97,10 @@ public class ApiController {
         if (user == null) {
             return;
         }
-        if (!changingUser.getName().equals("")){
+        if (!changingUser.getName().equals("")) {
             user.setName(changingUser.getName());
         }
-        if (!changingUser.getPassword().equals("")){
+        if (!changingUser.getPassword().equals("")) {
             user.setPassword(changingUser.getPassword());
         }
         userRepository.updateUser(user);
