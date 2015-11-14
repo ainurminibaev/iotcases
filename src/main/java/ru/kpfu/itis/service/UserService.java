@@ -6,9 +6,7 @@ import ru.kpfu.itis.model.helper.ChangingUser;
 
 import java.util.List;
 
-/**
- * Created by vladislav on 14.11.15.
- */
+
 public interface UserService {
 
     void saveUser(UserForm userForm);

@@ -9,7 +9,9 @@ public interface UserRepository {
 
     void saveUser(User user);
 
-    User updateUser(User user);
+    User updateUserApi(User user);
+
+    void updateUser(User user);
 
     void setAccess(User user);
 

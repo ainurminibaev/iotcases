@@ -46,9 +46,8 @@ public class AdminPanelController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String updateUser() {
-//        userService.saveUser(userForm);
-
+    public String updateUser(@ModelAttribute UserForm userForm) {
+        userService.updateUser(userForm);
         return "panel";
     }
 

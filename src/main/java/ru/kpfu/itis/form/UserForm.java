@@ -4,6 +4,8 @@ import ru.kpfu.itis.model.enums.Role;
 
 public class UserForm {
 
+    private Long id;
+
     private String name;
 
     private Integer role;
@@ -11,6 +13,14 @@ public class UserForm {
     private String password;
 
     private Long[] device;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long[] getDevice() {
         return device;

@@ -11,6 +11,9 @@ import java.util.List;
 public class SecListUtil {
 
     public static List<SecList> transformToList(Long userId, Long[] arr) {
+        if (arr == null) {
+            return null;
+        }
         List<SecList> secLists = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
             SecList secList = new SecList();

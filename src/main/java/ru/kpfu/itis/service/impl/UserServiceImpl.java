@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import ru.kpfu.itis.form.UserForm;
 import ru.kpfu.itis.model.SecList;
 import ru.kpfu.itis.model.User;
-import ru.kpfu.itis.model.enums.Role;
 import ru.kpfu.itis.model.helper.ChangingUser;
 import ru.kpfu.itis.repository.SecListRepository;
 import ru.kpfu.itis.repository.UserRepository;
@@ -16,7 +15,6 @@ import ru.kpfu.itis.util.UserFromToUser;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Transactional
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -26,17 +24,28 @@ public class UserServiceImpl implements UserService {
     @Autowired
     SecListRepository secListRepository;
 
+    @Transactional
     @Override
     public void saveUser(UserForm userForm) {
         User user = UserFromToUser.transformUser(userForm);
         userRepository.saveUser(user);
         List<SecList> secLists = SecListUtil.transformToList(user.getId(), userForm.getDevice());
-        secListRepository.save(secLists);
+        if (secLists != null) {
+            secListRepository.save(secLists);
+        }
     }
 
+
+    @Transactional
     @Override
     public void updateUser(UserForm userForm) {
-
+        User user = userRepository.searchUserById(userForm.getId());
+        userRepository.updateUser(UserFromToUser.update(user, userForm));
+        secListRepository.delete(userForm.getId());
+        List<SecList> secLists = SecListUtil.transformToList(user.getId(), userForm.getDevice());
+        if (secLists != null) {
+            secListRepository.save(secLists);
+        }
     }
 
     @Override
@@ -65,7 +74,7 @@ public class UserServiceImpl implements UserService {
         if (!"".equals(changingUser.getPassword())) {
             user.setPassword(changingUser.getPassword());
         }
-        return userRepository.updateUser(user);
+        return userRepository.updateUserApi(user);
     }
 
     @Override
