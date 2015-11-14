@@ -48,4 +48,14 @@ public class UserServiceImpl implements UserService {
     public void deleteAccess(User user) {
 
     }
+
+    @Override
+    public User searchUserById(Long id) {
+        return userRepository.searchUserById(id);
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        return userRepository.getAllUser();
+    }
 }

@@ -6,7 +6,9 @@ import ru.kpfu.itis.repository.UserRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
@@ -18,6 +20,19 @@ public class UserRepositoryImpl implements UserRepository {
     @Transactional
     public void saveUser(User user) {
         em.persist(user);
+    }
+
+    @Override
+    public User searchUserById(Long id) {
+        Query query = em.createNativeQuery("SELECT * FROM users u WHERE u.id = ?", User.class);
+        query.setParameter(1, id);
+        return (User) query.getSingleResult();
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        Query query = em.createNativeQuery("SELECT * FROM users", User.class);
+        return ((List<User>) query.getResultList());
     }
 
     @Override

@@ -3,13 +3,11 @@ package ru.kpfu.itis.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.form.UserForm;
 import ru.kpfu.itis.model.Device;
 import ru.kpfu.itis.repository.DeviceRepository;
+import ru.kpfu.itis.repository.SecListRepository;
 import ru.kpfu.itis.service.UserService;
 
 import java.util.List;
@@ -19,6 +17,9 @@ public class AdminPanelController {
 
     @Autowired
     DeviceRepository deviceRepository;
+
+    @Autowired
+    SecListRepository secListRepository;
 
     @Autowired
     UserService userService;
@@ -48,9 +49,19 @@ public class AdminPanelController {
         return "panel";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String getUpdateUserPage() {
+    @RequestMapping(value = "/update/{userId}", method = RequestMethod.GET)
+    public String getUpdateUserPage(@PathVariable("userId") Long userId, Model map) {
+        List<Device> devices = deviceRepository.findAll();
+        map.addAttribute("devices", devices);
+        map.addAttribute("user", userService.searchUserById(userId));
+        map.addAttribute("devicesUser", secListRepository.getDevicesByUserId(userId));
         return "update";
+    }
+
+    @RequestMapping(value = "/all-users", method = RequestMethod.GET)
+    public String getAllUser(Model map) {
+        map.addAttribute("users", userService.getAllUser());
+        return "all-users";
     }
 
 }
