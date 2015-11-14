@@ -25,6 +25,12 @@
                 <tomcatHome>/home/azureuser/tomcat</tomcatHome>
             </properties>
         </profile>
+        <profile>
+            <id>a-server</id>
+            <properties>
+                <tomcatHome>/Users/ainurminibaev/Documents/Develop/installation/apache-tomcat-7.0.50</tomcatHome>
+            </properties>
+        </profile>
 
     </profiles>
 
@@ -190,12 +196,12 @@
                     <!-- Container configuration -->
                     <container>
                         <containerId>tomcat7x</containerId>
-                        <home>${tomcat.home}</home>
+                        <home>${tomcatHome}</home>
                         <type>installed</type>
                     </container>
                     <configuration>
                         <type>existing</type>
-                        <home>${tomcat.home}</home>
+                        <home>${tomcatHome}</home>
                     </configuration>
                     <!--<deployables>-->
                     <!--<deployable>-->
