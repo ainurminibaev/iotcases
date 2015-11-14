@@ -1,6 +1,7 @@
 package ru.kpfu.itis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.model.Device;
@@ -92,8 +93,8 @@ public class ApiController {
         }
     }
 
-    @RequestMapping(value = "/api/devices", method = RequestMethod.POST, headers = "content-type=application/json,application/xml")
-    private void saveDevices(@RequestBody RandomDevicesList devicesList) {
+    @RequestMapping(value = "/api/devices", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void saveDevices(@RequestBody RandomDevicesList devicesList) {
         //TODO to service and add transactional
         List<Device> devices = devicesList.getDevices()
                 .stream()
@@ -106,8 +107,8 @@ public class ApiController {
         deviceRepository.save(devices);
     }
 
-    @RequestMapping(value = "/api/user/change", method = RequestMethod.POST, headers = "content-type=application/json,application/xml")
-    private void editUser(@RequestBody ChangingUser changingUser) {
+    @RequestMapping(value = "/api/user/change", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void editUser(@RequestBody ChangingUser changingUser) {
         //TODO to service and add transactional
         User user = checkPin(changingUser.getPin());
         if (user == null) {
