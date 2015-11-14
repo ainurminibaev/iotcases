@@ -8,6 +8,7 @@ import ru.kpfu.itis.model.Device;
 import ru.kpfu.itis.model.User;
 import ru.kpfu.itis.model.helper.DeviceJson;
 import ru.kpfu.itis.model.helper.EmptyJson;
+import ru.kpfu.itis.model.helper.RandomDevicesList;
 import ru.kpfu.itis.model.helper.UserJson;
 import ru.kpfu.itis.repository.DeviceRepository;
 import ru.kpfu.itis.repository.SecListRepository;
@@ -68,9 +69,10 @@ public class ApiController {
         }
     }
 
-//    @RequestMapping(value = "/devices", method = RequestMethod.POST)
-//    private Object saveDevices(@RequestBody ) {
-//
-//    }
+    @RequestMapping(value = "/devices", method = RequestMethod.POST)
+    private void saveDevices(@RequestBody RandomDevicesList devicesList) {
+        devicesList.generateNames();
+        deviceRepository.save(devicesList.getDevices());
+    }
 
 }
