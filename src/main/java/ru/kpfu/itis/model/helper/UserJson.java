@@ -9,32 +9,32 @@ import java.util.List;
  */
 public class UserJson {
 
-    private Long userId;
+    private Long id;
 
-    private String userName;
+    private String name;
 
     private List<Device> devices;
 
-    public UserJson(Long userId, String userName, List<Device> devices) {
-        this.userId = userId;
-        this.userName = userName;
+    public UserJson(Long id, String name, List<Device> devices) {
+        this.id = id;
+        this.name = name;
         this.devices = devices;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Device> getDevices() {

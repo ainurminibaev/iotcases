@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
  * Created by vlad on 14.11.15.
  */
 @Controller
-@RequestMapping(value = "/api")
 public class ApiController {
 
     @Autowired
@@ -34,8 +33,8 @@ public class ApiController {
     DeviceRepository deviceRepository;
 
     @ResponseBody
-    @RequestMapping(value = "/devices")
-    public List<Device> getDevice(@RequestParam("id") Long id) {
+    @RequestMapping(value = "get/accesses")
+    public List<Device> getDevice(@RequestParam("uid") Long id) {
         return secListRepository.getDevicesByUserId(id);
     }
 
@@ -53,7 +52,7 @@ public class ApiController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/user")
+    @RequestMapping(value = "/api/user")
     public UserJson getUserDevices(@RequestParam("pin") String pin) {
         User user = checkPin(pin);
         List<Device> devices = secListRepository.getDevicesByUserId(user.getId());
@@ -61,14 +60,14 @@ public class ApiController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/device")
+    @RequestMapping(value = "/api/device")
     public DeviceJson getDeviceUsers(@RequestParam("id") Long id) {
         List<Long> usersId = secListRepository.getDeviceUsersId(id);
         return new DeviceJson(id, secListRepository.getDevice(id).getName(), usersId);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/empty")
+    @RequestMapping(value = "/api/empty")
     public Object checkDevicesEmpty() {
         if (deviceRepository.findAll().isEmpty()) {
             return new EmptyJson(true);
@@ -77,7 +76,7 @@ public class ApiController {
         }
     }
 
-    @RequestMapping(value = "/devices", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/devices", method = RequestMethod.POST)
     private void saveDevices(@RequestBody RandomDevicesList devicesList) {
         //TODO to service and add transactional
         List<Device> devices = devicesList.getDevices()
@@ -91,7 +90,7 @@ public class ApiController {
         deviceRepository.save(devices);
     }
 
-    @RequestMapping(value = "/user/change", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/user/change", method = RequestMethod.POST)
     private void editUser(@RequestBody ChangingUser changingUser) {
         //TODO to service and add transactional
         User user = checkPin(changingUser.getPin());

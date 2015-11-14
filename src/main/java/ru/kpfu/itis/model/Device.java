@@ -19,6 +19,9 @@ public class Device {
     public Device() {
     }
 
+    public Device(Device device) {
+    }
+
     public Long getId() {
         return id;
     }

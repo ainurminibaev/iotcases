@@ -9,39 +9,39 @@ import java.util.List;
  */
 public class DeviceJson {
 
-    private Long deviceId;
+    private Long id;
 
-    private String deviceName;
+    private String name;
 
-    private List<User> deviceUsers;
+    private List<Long> users;
 
-    public DeviceJson(Long deviceId, String deviceName, List<User> deviceUsers) {
-        this.deviceId = deviceId;
-        this.deviceName = deviceName;
-        this.deviceUsers = deviceUsers;
+    public DeviceJson(Long deviceId, String deviceName, List<Long> deviceUsersId) {
+        this.id = deviceId;
+        this.name = deviceName;
+        this.users = deviceUsersId;
     }
 
     public Long getDeviceId() {
-        return deviceId;
+        return id;
     }
 
     public void setDeviceId(Long deviceId) {
-        this.deviceId = deviceId;
+        this.id = deviceId;
     }
 
     public String getDeviceName() {
-        return deviceName;
+        return name;
     }
 
     public void setDeviceName(String deviceName) {
-        this.deviceName = deviceName;
+        this.name = deviceName;
     }
 
-    public List<User> getDeviceUsers() {
-        return deviceUsers;
+    public List<Long> getDeviceUsers() {
+        return users;
     }
 
-    public void setDeviceUsers(List<User> deviceUsers) {
-        this.deviceUsers = deviceUsers;
+    public void setDeviceUsers(List<Long> deviceUsersId) {
+        this.users = deviceUsersId;
     }
 }
