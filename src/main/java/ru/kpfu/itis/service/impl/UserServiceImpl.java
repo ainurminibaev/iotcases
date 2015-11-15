@@ -66,6 +66,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User updateUser(ChangingUser changingUser) {
         User user = checkPin(changingUser.getPin());
         if (user == null) {
