@@ -1,13 +1,19 @@
 package ru.kpfu.itis.util;
 
+import jxl.CellView;
 import jxl.Workbook;
 import jxl.WorkbookSettings;
+import jxl.format.*;
+import jxl.format.Alignment;
 import jxl.write.*;
 import jxl.write.Number;
+import ru.kpfu.itis.model.Device;
+import ru.kpfu.itis.model.User;
+import ru.kpfu.itis.util.logger.Action;
+import ru.kpfu.itis.util.logger.Logger;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -16,103 +22,92 @@ import java.util.Locale;
 public class XlsGenerator {
 
     public static void main(String[] args) {
+
+//        log generation
+        boolean access = true;
+        for (int i = 0; i < 50; i++) {
+            if (Math.random() > 0.5) access = !access;
+            Logger.add(new Action(new User("User" + i), new Device("Device" + i), access));
+        }
+
+//        output log to console
+        Logger.show();
+
+//        output log to .xls
         try {
             String filename = "input.xls";
             WorkbookSettings ws = new WorkbookSettings();
-            ws.setLocale(new Locale("en", "EN"));
-            WritableWorkbook workbook =
-                    Workbook.createWorkbook(new File(filename), ws);
-            WritableSheet s = workbook.createSheet("Sheet1", 0);
-            WritableSheet s1 = workbook.createSheet("Sheet1", 0);
+            ws.setLocale(new Locale("ru", "RU"));
+            WritableWorkbook workbook = Workbook.createWorkbook(new File(filename), ws);
+            WritableSheet s = workbook.createSheet("Лог", 0);
             writeDataSheet(s);
-//            writeImageSheet(s1);
             workbook.write();
             workbook.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (WriteException e) {
+        } catch (IOException | WriteException e) {
             e.printStackTrace();
         }
     }
 
     private static void writeDataSheet(WritableSheet s) throws WriteException {
 
+        int date_col = 0;
+        int user_col = 1;
+        int device_col = 2;
+        int access_col = 3;
+
+        s.setColumnView(date_col, 20);
+        s.setColumnView(user_col, 20);
+        s.setColumnView(device_col, 20);
+        s.setColumnView(access_col, 20);
+
     /* Format the Font */
-        WritableFont wf = new WritableFont(WritableFont.ARIAL,10, WritableFont.BOLD);
+        WritableFont wf = new WritableFont(WritableFont.ARIAL, 10, WritableFont.BOLD);
         WritableCellFormat cf = new WritableCellFormat(wf);
         cf.setWrap(true);
+        cf.setAlignment(Alignment.CENTRE);
 
-    /* Creates Label and writes date to one cell of sheet*/
-        Label l = new Label(0, 0, "Date", cf);
+    /* Date*/
+        Label l = new Label(date_col, 0, "Дата", cf);
         s.addCell(l);
-        WritableCellFormat cf1 =
-                new WritableCellFormat(DateFormats.FORMAT9);
+        WritableCellFormat cf1 = new WritableCellFormat(DateFormats.FORMAT9);
+        cf1.setAlignment(Alignment.CENTRE);
 
-        DateTime dt = new DateTime(0, 1, new Date(), cf1, DateTime.GMT);
+        for (int i = 0; i < Logger.size(); i++) {
+            DateTime dt = new DateTime(date_col, i + 1, Logger.get(i).getDate(), cf1, DateTime.GMT);
+            s.addCell(dt);
+        }
 
-        s.addCell(dt);
-
-    /* Creates Label and writes float number to one cell of sheet*/
-        l = new Label(2, 0, "Float", cf);
+    /* User*/
+        l = new Label(user_col, 0, "Пользователь", cf);
         s.addCell(l);
-        WritableCellFormat cf2 = new WritableCellFormat(NumberFormats.FLOAT);
-        Number n = new Number(2, 1, 3.1415926535, cf2);
-        s.addCell(n);
 
-        n = new Number(2, 2, -3.1415926535, cf2);
-        s.addCell(n);
+        for (int i = 0; i < Logger.size(); i++) {
+            l = new Label(user_col, i + 1, Logger.get(i).getUser().getName(), cf);
+            s.addCell(l);
+        }
 
-    /* Creates Label and writes float number upto 3
-       decimal to one cell of sheet */
-        l = new Label(3, 0, "3dps", cf);
+    /* Device*/
+        l = new Label(device_col, 0, "Устройство", cf);
         s.addCell(l);
-        NumberFormat dp3 = new NumberFormat("#.###");
-        WritableCellFormat dp3cell = new WritableCellFormat(dp3);
-        n = new Number(3, 1, 3.1415926535, dp3cell);
-        s.addCell(n);
 
-    /* Creates Label and adds 2 cells of sheet*/
-        l = new Label(4, 0, "Add 2 cells", cf);
-        s.addCell(l);
-        n = new Number(4, 1, 10);
-        s.addCell(n);
-        n = new Number(4, 2, 16);
-        s.addCell(n);
-        Formula f = new Formula(4, 3, "E1+E2");
-        s.addCell(f);
+        for (int i = 0; i < Logger.size(); i++) {
+            l = new Label(device_col, i + 1, Logger.get(i).getDevice().getName(), cf);
+            s.addCell(l);
+        }
 
-    /* Creates Label and multipies value of one cell of sheet by 2*/
-        l = new Label(5, 0, "Multipy by 2", cf);
+    /* Access*/
+        l = new Label(access_col, 0, "Доступ", cf);
         s.addCell(l);
-        n = new Number(5, 1, 10);
-        s.addCell(n);
-        f = new Formula(5, 2, "F1 * 3");
-        s.addCell(f);
 
-    /* Creates Label and divide value of one cell of sheet by 2.5 */
-        l = new Label(6, 0, "Divide", cf);
-        s.addCell(l);
-        n = new Number(6, 1, 12);
-        s.addCell(n);
-        f = new Formula(6, 2, "F1/2.5");
-        s.addCell(f);
+        for (int i = 0; i < Logger.size(); i++) {
+            if (Logger.get(i).isAccess()) {
+                l = new Label(access_col, i + 1, "Разрешен" , cf);
+            } else {
+                l = new Label(access_col, i + 1, "Запрещен" , cf);
+            }
+            s.addCell(l);
+        }
+
     }
-
-//    private static void writeImageSheet(WritableSheet s) throws WriteException {
-//    /* Creates Label and writes image to one cell of sheet*/
-//        Label l = new Label(0, 0, "Image");
-//        s.addCell(l);
-//        WritableImage wi = new WritableImage(0, 3, 5, 7, new File("image.png"));
-//        s.addImage(wi);
-//
-//    /* Creates Label and writes hyperlink to one cell of sheet*/
-//        l = new Label(0, 15, "HYPERLINK");
-//        s.addCell(l);
-//        Formula f = new Formula(1, 15,
-//                "HYPERLINK(\"http://www.andykhan.com/jexcelapi\", " +
-//                        "\"JExcelApi Home Page\")");
-//        s.addCell(f);
-//
-//    }
 
 }
