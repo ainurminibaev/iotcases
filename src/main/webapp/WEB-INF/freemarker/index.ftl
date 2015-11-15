@@ -179,7 +179,6 @@
                             <div id="nivo-slider" class="nivoSlider">
                                 <img src="/resources/img/slider/img1.png" class="img-responsive" alt=""/>
                                 <img src="/resources/img/slider/img2.png" class="img-responsive" alt=""/>
-                                <img src="/resources/img/slider/img3.png" class="img-responsive" alt=""/>
                             </div>
                         </div>
                         <img src="/resources/img/ipad.png" class="img-responsive slider-bg" alt=""/>
