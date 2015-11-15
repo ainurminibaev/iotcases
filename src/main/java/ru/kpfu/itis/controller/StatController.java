@@ -14,6 +14,7 @@ import ru.kpfu.itis.model.helper.ActionJson;
 import ru.kpfu.itis.repository.Logger;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 import java.io.*;
 import java.net.URLDecoder;
 import java.util.List;
@@ -146,6 +147,7 @@ public class StatController {
 
     }
 
+    @Transactional
     @RequestMapping(value = "/api/log", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void recordAction(@RequestBody ActionJson actionJson) {
         Action action = new Action(actionJson.getU_name(), actionJson.getD_name(), actionJson.isAccess());
