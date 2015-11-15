@@ -26,7 +26,6 @@ public class Generator {
             JsonElement root = new JsonParser().parse(new FileReader(new File(getPath() + "/data.json").getCanonicalPath()));
             rootList = new Gson().fromJson(root, new TypeToken<List<JsonObjectETF>>() {
             }.getType());
-            System.out.println(rootList);
         } catch (Exception e) {
         }
     }
@@ -34,9 +33,6 @@ public class Generator {
     private String getPath() throws UnsupportedEncodingException {
         String path = this.getClass().getClassLoader().getResource("").getPath();
         String fullPath = URLDecoder.decode(path, "UTF-8");
-        String pathArr[] = fullPath.split("/target/");
-        System.out.println(pathArr[0]);
-        fullPath = pathArr[0];
 
         return fullPath;
     }
