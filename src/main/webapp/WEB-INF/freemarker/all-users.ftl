@@ -1,10 +1,7 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
 <#list users as user>
-<p><a href="/update/${user.id}">${user.id} ${user.name}</a></p>
+<div class="user" onclick="getDevice(${user.id})">
+    <div class="id-user">${user.id}</div>
+    <div class="username">${user.name}</div>
+    <div style="clear: both"></div>
+</div>
 </#list>
-</body>
-</html>

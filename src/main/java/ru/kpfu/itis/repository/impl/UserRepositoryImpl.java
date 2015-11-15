@@ -1,6 +1,5 @@
 package ru.kpfu.itis.repository.impl;
 
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
 import ru.kpfu.itis.model.User;
 import ru.kpfu.itis.repository.UserRepository;
@@ -8,7 +7,6 @@ import ru.kpfu.itis.repository.UserRepository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -19,8 +17,8 @@ public class UserRepositoryImpl implements UserRepository {
 
 
     @Override
-    public void saveUser(User user) {
-        em.merge(user);
+    public User saveUser(User user) {
+       return em.merge(user);
     }
 
     @Override

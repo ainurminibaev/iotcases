@@ -1,0 +1,165 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    padding: 50px 0 0 0;
+}
+
+.navmenu {
+    padding-top: 50px;
+}
+
+.navbar {
+    display: block;
+    text-align: center;
+}
+
+.navbar-brand {
+    display: inline-block;
+    float: none;
+}
+
+.navbar-toggle {
+    position: absolute;
+    float: left;
+    margin-left: 15px;
+}
+
+.container {
+    max-width: 100%;
+}
+
+@media (min-width: 1px) {
+    .navbar-toggle {
+        display: block !important;
+    }
+}
+
+@media (min-width: 992px) {
+    body {
+        padding: 0 0 0 150px;
+    }
+
+    .navmenu {
+        padding-top: 0;
+    }
+
+    .navbar {
+        display: none !important; /* для IE8 */
+    }
+}
+
+.left-menu {
+    font-size: 17px;
+}
+
+.left-menu-item {
+    color: white;
+!important;
+}
+
+.user {
+    border: 2px solid #fff;
+    font-size: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.wrapper {
+    padding-top: 20px;
+    color: #444444;
+}
+
+.username {
+    cursor: pointer;
+    float: right;
+    background-color: #0081b5;
+    width: 80%;
+    color: #fff;
+}
+
+.username:hover {
+    background-color: #0077a7;
+}
+
+.id-user {
+    width: 20%;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #0E0F33;
+    color: #fff;
+}
+
+.device {
+
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.check {
+    width: 20%;
+    float: right;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #00364d;
+    color: #fff;
+    border: 2px solid #00364d;
+    border-left: 0;
+    border-right: 0;
+}
+
+.device-name {
+    cursor: pointer;
+    float: left;
+    color: #0E0F33;
+    border: 2px solid;
+    width: 80%;
+    border-right: 0;
+}
+
+.device-name-bg-red {
+    border-color: rgba(236, 30, 0, 0.63);
+}
+
+.device:hover .device-name-bg-red {
+    color: #fff;
+    background-color:rgba(160, 20, 0, 0.63);
+}
+
+.device-name-bg-green {
+    border-color: rgba(0, 221, 10, 0.46);
+     color: #fff;
+    background-color:rgba(0, 165, 11, 0.46);
+}
+.list-devices{
+    font-size: 18px;
+}
+
+.active-link {
+    background-color: #ffffff;
+}
+
+.active-link .fa{
+   color:#0E0F33;
+}
+
+.active-link {
+    background-color: #ffffff;
+}
+
+
+.full-red-bg {
+    color: #fff;
+    background-color:rgba(160, 20, 0, 0.63);
+}
+
+.full-green-bg {
+    color: #fff;
+    background-color:rgba(0, 165, 11, 0.46);
+}
+#list-devices{
+    top:55px;
+}

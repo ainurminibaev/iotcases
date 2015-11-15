@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(UserForm userForm) {
         User user = UserFromToUser.transformUser(userForm);
-        userRepository.saveUser(user);
+        user = userRepository.saveUser(user);
 
         user.getId();
 

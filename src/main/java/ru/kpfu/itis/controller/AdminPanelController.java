@@ -42,7 +42,7 @@ public class AdminPanelController {
     public String getSavePage(Model map) {
         List<Device> devices = deviceRepository.findAll();
         map.addAttribute("devices", devices);
-        return "create";
+        return "add";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -67,4 +67,27 @@ public class AdminPanelController {
         return "all-users";
     }
 
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String getEditPage() {
+        return "edit";
+    }
+
+    @RequestMapping(value = "/edit-device/{id}")
+    public String getDevice(@PathVariable("id") Long id, Model map) {
+        map.addAttribute("device", deviceRepository.findOne(id));
+        return "device-list";
+
+    }
+
+    @RequestMapping(value = "/edit-device", method = RequestMethod.GET)
+    public String getDevice(Model map) {
+        map.addAttribute("devices", deviceRepository.findAll());
+        return "edit-device";
+    }
+
+    @RequestMapping(value = "/update-device", method = RequestMethod.POST)
+    public String saveDevice(@ModelAttribute Device device, Model map) {
+        deviceRepository.save(device);
+        return "edit-device";
+    }
 }

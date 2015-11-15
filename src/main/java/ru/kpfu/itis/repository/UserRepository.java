@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserRepository {
 
-    void saveUser(User user);
+    User saveUser(User user);
 
     User updateUserApi(User user);
 
