@@ -87,12 +87,12 @@ public class ApiController {
         }
     }
 
-    @RequestMapping(value = "/api/devices", method = RequestMethod.POST , consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/api/devices", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void saveDevices(@RequestBody RandomDevicesList devicesList) {
         deviceService.saveDevices(devicesList);
     }
 
-    @RequestMapping(value = "/api/user/change", method = RequestMethod.POST , consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/api/user/change", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void editUser(@RequestBody ChangingUser changingUser) {
         userService.updateUser(changingUser);
     }

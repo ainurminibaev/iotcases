@@ -4,10 +4,13 @@ import jxl.Workbook;
 import jxl.WorkbookSettings;
 import jxl.write.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ru.kpfu.itis.model.helper.Action;
+import ru.kpfu.itis.model.Action;
+import ru.kpfu.itis.model.helper.ActionJson;
 import ru.kpfu.itis.repository.Logger;
 
 import javax.servlet.http.HttpServletResponse;
@@ -61,7 +64,7 @@ public class StatController {
         is.close();
     }
 
-    public String generate(String path) {
+    private String generate(String path) {
         String filename = path + "/stat.xls";
         try {
             WorkbookSettings ws = new WorkbookSettings();
@@ -115,7 +118,7 @@ public class StatController {
 
         i = 0;
         for (Action a : actions) {
-            l = new Label(user_col, i + 1, a.getUser().getName(), cf);
+            l = new Label(user_col, i + 1, a.getUser(), cf);
             s.addCell(l);
         }
 
@@ -124,7 +127,7 @@ public class StatController {
         s.addCell(l);
 
         for (Action a : actions) {
-            l = new Label(device_col, i + 1, a.getDevice().getName(), cf);
+            l = new Label(device_col, i + 1, a.getDevice(), cf);
             s.addCell(l);
         }
 
@@ -141,6 +144,12 @@ public class StatController {
             s.addCell(l);
         }
 
+    }
+
+    @RequestMapping(value = "/api/log", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void recordAction(@RequestBody ActionJson actionJson) {
+        Action action = new Action(actionJson.getU_name(), actionJson.getD_name(), actionJson.isAccess());
+        logger.save(action);
     }
 
 }

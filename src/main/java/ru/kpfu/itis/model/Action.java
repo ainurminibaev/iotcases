@@ -1,7 +1,4 @@
-package ru.kpfu.itis.model.helper;
-
-import ru.kpfu.itis.model.Device;
-import ru.kpfu.itis.model.User;
+package ru.kpfu.itis.model;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,26 +7,25 @@ import java.util.Date;
  * Created by vlad on 15.11.15.
  */
 @Entity
+@Table(name = "actiontable")
 public class Action {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date date;
 
-    @OneToOne
-    @JoinColumn()
-    private User user;
+    @Column(name = "username")
+    private String user;
 
-    @OneToOne
-    @JoinColumn()
-    private Device device;
+    private String device;
 
     private boolean access;
 
-    public Action(User user, Device device, boolean access) {
-        this.date = new Date();
+    public Action(String user, String device, boolean access) {
+        date = new Date();
         this.user = user;
         this.device = device;
         this.access = access;
@@ -51,19 +47,19 @@ public class Action {
         this.date = date;
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
-    public Device getDevice() {
+    public String getDevice() {
         return device;
     }
 
-    public void setDevice(Device device) {
+    public void setDevice(String device) {
         this.device = device;
     }
 
