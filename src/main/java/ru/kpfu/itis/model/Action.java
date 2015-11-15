@@ -24,6 +24,9 @@ public class Action {
 
     private boolean access;
 
+    public Action() {
+    }
+
     public Action(String user, String device, boolean access) {
         date = new Date();
         this.user = user;

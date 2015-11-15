@@ -26,12 +26,10 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void saveUser(UserForm userForm) {
-        User user = UserFromToUser.transformUser(userForm);
-        userRepository.saveUser(user);
-
-        user.getId();
-
+    public void updateUser(UserForm userForm) {
+        User user = userRepository.searchUserById(userForm.getId());
+        userRepository.updateUser(UserFromToUser.update(user, userForm));
+        secListRepository.delete(userForm.getId());
         List<SecList> secLists = SecListUtil.transformToList(user.getId(), userForm.getDevice());
         if (secLists != null) {
             secListRepository.save(secLists);
@@ -41,10 +39,12 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void updateUser(UserForm userForm) {
-        User user = userRepository.searchUserById(userForm.getId());
-        userRepository.updateUser(UserFromToUser.update(user, userForm));
-        secListRepository.delete(userForm.getId());
+    public void saveUser(UserForm userForm) {
+        User user = UserFromToUser.transformUser(userForm);
+        userRepository.saveUser(user);
+
+        user.getId();
+
         List<SecList> secLists = SecListUtil.transformToList(user.getId(), userForm.getDevice());
         if (secLists != null) {
             secListRepository.save(secLists);

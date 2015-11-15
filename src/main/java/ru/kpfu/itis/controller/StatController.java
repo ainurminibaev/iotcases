@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import ru.kpfu.itis.model.Action;
 import ru.kpfu.itis.model.helper.ActionJson;
 import ru.kpfu.itis.repository.Logger;
+import ru.kpfu.itis.service.LogService;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
@@ -27,7 +29,7 @@ import java.util.Locale;
 public class StatController {
 
     @Autowired
-    Logger logger;
+    LogService logService;
 
     public String getPath() throws UnsupportedEncodingException {
         String path = this.getClass().getClassLoader().getResource("").getPath();
@@ -99,7 +101,7 @@ public class StatController {
         cf.setWrap(true);
         cf.setAlignment(jxl.format.Alignment.CENTRE);
 
-        List<Action> actions = logger.findAll();
+        List<Action> actions = logService.findAll();
 
     /* Date*/
         Label l = new Label(date_col, 0, "Дата", cf);
@@ -109,7 +111,7 @@ public class StatController {
 
         int i = 0;
         for (Action a : actions) {
-            DateTime dt = new DateTime(date_col, i + 1, a.getDate(), cf1, DateTime.GMT);
+            DateTime dt = new DateTime(date_col, ++i, a.getDate(), cf1, DateTime.GMT);
             s.addCell(dt);
         }
 
@@ -119,7 +121,7 @@ public class StatController {
 
         i = 0;
         for (Action a : actions) {
-            l = new Label(user_col, i + 1, a.getUser(), cf);
+            l = new Label(user_col, ++i, a.getUser(), cf);
             s.addCell(l);
         }
 
@@ -127,8 +129,9 @@ public class StatController {
         l = new Label(device_col, 0, "Устройство", cf);
         s.addCell(l);
 
+        i = 0;
         for (Action a : actions) {
-            l = new Label(device_col, i + 1, a.getDevice(), cf);
+            l = new Label(device_col, ++i, a.getDevice(), cf);
             s.addCell(l);
         }
 
@@ -136,22 +139,23 @@ public class StatController {
         l = new Label(access_col, 0, "Доступ", cf);
         s.addCell(l);
 
+        i = 0;
         for (Action a : actions) {
             if (a.isAccess()) {
-                l = new Label(access_col, i + 1, "Разрешен", cf);
+                l = new Label(access_col, ++i, "Разрешен", cf);
             } else {
-                l = new Label(access_col, i + 1, "Запрещен", cf);
+                l = new Label(access_col, ++i, "Запрещен", cf);
             }
             s.addCell(l);
         }
 
     }
 
-    @Transactional
+    @ResponseBody
     @RequestMapping(value = "/api/log", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void recordAction(@RequestBody ActionJson actionJson) {
         Action action = new Action(actionJson.getU_name(), actionJson.getD_name(), actionJson.isAccess());
-        logger.save(action);
+        logService.save(action);
     }
 
 }
