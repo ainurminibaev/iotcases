@@ -6,17 +6,13 @@ import jxl.write.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.model.Action;
 import ru.kpfu.itis.model.helper.ActionJson;
-import ru.kpfu.itis.repository.Logger;
 import ru.kpfu.itis.service.LogService;
+import ru.kpfu.itis.util.Generator;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
 import java.io.*;
 import java.net.URLDecoder;
 import java.util.List;
@@ -61,6 +57,10 @@ public class StatController {
         while ((len = is.read(buffer)) != -1) {
             os.write(buffer, 0, len);
         }
+
+        System.out.println(new Generator().randomName());
+        int t = 90;
+        System.out.println("");
 
         os.flush();
         os.close();
@@ -156,6 +156,13 @@ public class StatController {
     public void recordAction(@RequestBody ActionJson actionJson) {
         Action action = new Action(actionJson.getU_name(), actionJson.getD_name(), actionJson.isAccess());
         logService.save(action);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/api/generate/{n}")
+    public void genActions(@PathVariable int n) {
+        List<Action> actions = new Generator().randomActions(n);
+        logService.save(actions);
     }
 
 }

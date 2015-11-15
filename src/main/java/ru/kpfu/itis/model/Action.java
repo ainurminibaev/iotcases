@@ -34,6 +34,13 @@ public class Action {
         this.access = access;
     }
 
+    public Action(Date date, String user, String device, boolean access) {
+        this.date = date;
+        this.user = user;
+        this.device = device;
+        this.access = access;
+    }
+
     public Long getId() {
         return id;
     }
