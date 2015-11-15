@@ -1,6 +1,7 @@
 target
 .idea
 *.iml
+*.xls
 iotcases-*.properties
 .DS_Store
 database.properties

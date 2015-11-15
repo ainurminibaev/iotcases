@@ -1,19 +1,29 @@
-package ru.kpfu.itis.util.logger;
+package ru.kpfu.itis.model.helper;
 
 import ru.kpfu.itis.model.Device;
 import ru.kpfu.itis.model.User;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by vlad on 15.11.15.
  */
+@Entity
 public class Action {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private Date date;
 
+    @OneToOne
+    @JoinColumn()
     private User user;
 
+    @OneToOne
+    @JoinColumn()
     private Device device;
 
     private boolean access;
@@ -23,6 +33,14 @@ public class Action {
         this.user = user;
         this.device = device;
         this.access = access;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Date getDate() {
