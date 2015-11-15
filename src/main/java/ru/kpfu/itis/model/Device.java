@@ -18,6 +18,10 @@ public class Device {
     public Device() {
     }
 
+    public Device(String name) {
+        this.name = name;
+    }
+
     public Device(Device device) {
     }
 

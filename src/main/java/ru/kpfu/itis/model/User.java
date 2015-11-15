@@ -20,6 +20,13 @@ public class User {
 
     private String password;
 
+    public User() {
+    }
+
+    public User(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         switch (("" + id).length()) {
             case 1: return Long.parseLong("00" + id);
