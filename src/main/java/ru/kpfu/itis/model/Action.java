@@ -15,13 +15,14 @@ public class Action {
     private Long id;
 
     @Temporal(value = TemporalType.TIMESTAMP)
+    @Column(name = "act_date")
     private Date date;
 
     @Column(name = "username")
     private String user;
 
     private String device;
-
+    @Column(name = "has_access")
     private boolean access;
 
     public Action() {
