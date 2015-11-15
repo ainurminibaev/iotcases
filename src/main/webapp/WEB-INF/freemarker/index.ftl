@@ -50,12 +50,13 @@
 
 <body>
 
+
 <div id="cbp-so-scroller" class="wrapper cbp-so-scroller">
     <!-- Start header -->
     <header>
         <div class="navbar navbar-default">
             <div class="navbar-header">
-                <a href="#" class="logo"><img src="/resources/img/logo.png" alt="" /></a>
+                <a href="#" class="logo"><img src="/resources/img/logo.png" alt=""/></a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -65,7 +66,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a id="GoToHome" href="#home"  class="selected">Начало</a></li>
+                    <li><a id="GoToHome" href="#home" class="selected">Начало</a></li>
                     <li><a id="GoToWorks" href="#work">Как это работает</a></li>
                     <li><a id="GoToFeatures" href="#features">Для чего</a></li>
                 </ul>
@@ -73,7 +74,8 @@
                     <a href="#myModal" data-toggle="modal" data-target="#myModal" class="btn">Sign in</a>
                     <a href="#myModal" data-toggle="modal" data-target="#myModal" class="btn">Sign up</a>
                 </div>
-            </div><!--/.nav-collapse -->
+            </div>
+            <!--/.nav-collapse -->
         </div>
     </header>
     <!-- End header -->
@@ -85,51 +87,63 @@
                 <div class="modal-body">
                     <div class="signup">
                         <h4>Create new account</h4>
+
                         <p>
-                            Vix posse ipsum munere ne, est mazim accusata scribentur ne. Consulatu eloquentiam ex vis, his zril oratio invenire ex.
+                            Vix posse ipsum munere ne, est mazim accusata scribentur ne. Consulatu eloquentiam ex vis,
+                            his zril oratio invenire ex.
                         </p>
+
                         <form class="form-horizontal">
                             <div class="form-group">
                                 <div class="col-lg-12">
-                                    <input type="text" class="form-control form-block" placeholder="Enter your username">
+                                    <input type="text" class="form-control form-block"
+                                           placeholder="Enter your username">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-12">
-                                    <input type="text" class="form-control form-block" placeholder="Enter your email address">
+                                    <input type="text" class="form-control form-block"
+                                           placeholder="Enter your email address">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-12">
-                                    <input type="text" class="form-control form-block" placeholder="Enter your password">
+                                    <input type="text" class="form-control form-block"
+                                           placeholder="Enter your password">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-12">
-                                    <input type="text" class="form-control form-block" placeholder="Retype your password">
+                                    <input type="text" class="form-control form-block"
+                                           placeholder="Retype your password">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-12">
-                                    <button class="btn btn-md sign-button" >Sign up</button>
+                                    <button class="btn btn-md sign-button">Sign up</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="signin">
                         <h4>Member login</h4>
+
                         <p>
-                            Argumentum in nec errem imperdiet abhorreant ei. Id lorem quando legere eos, ea nam diam disputando, ea est hinc salutatus similique.
+                            Argumentum in nec errem imperdiet abhorreant ei. Id lorem quando legere eos, ea nam diam
+                            disputando, ea est hinc salutatus similique.
                         </p>
+
                         <form class="form-horizontal">
                             <div class="form-group">
                                 <div class="col-lg-12">
-                                    <input type="text" class="form-control form-block" placeholder="Enter your username">
+                                    <input type="text" class="form-control form-block"
+                                           placeholder="Enter your username">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-12">
-                                    <input type="text" class="form-control form-block" placeholder="Enter your password">
+                                    <input type="text" class="form-control form-block"
+                                           placeholder="Enter your password">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -157,18 +171,18 @@
                             <li><h4>Ограничьте доступ к приватным вещам в любом помещении</h4></li>
                         </ul>
                     </div>
-                    <a  href="#myModal" data-toggle="modal" data-target="#myModal"  class="btn btn-md">Начать сейчас!</a>
+                    <a href="#myModal" data-toggle="modal" data-target="#myModal" class="btn btn-md">Начать сейчас!</a>
                 </div>
                 <div class="row text-center margintop60">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="slider-wrapper">
                             <div id="nivo-slider" class="nivoSlider">
-                                <img src="/resources/img/slider/img1.png" class="img-responsive" alt="" />
-                                <img src="/resources/img/slider/img2.png" class="img-responsive" alt="" />
-                                <img src="/resources/img/slider/img3.png" class="img-responsive" alt="" />
+                                <img src="/resources/img/slider/img1.png" class="img-responsive" alt=""/>
+                                <img src="/resources/img/slider/img2.png" class="img-responsive" alt=""/>
+                                <img src="/resources/img/slider/img3.png" class="img-responsive" alt=""/>
                             </div>
                         </div>
-                        <img src="/resources/img/ipad.png" class="img-responsive slider-bg" alt="" />
+                        <img src="/resources/img/ipad.png" class="img-responsive slider-bg" alt=""/>
                     </div>
                 </div>
             </div>
@@ -183,9 +197,13 @@
             <div class="row cbp-so-section">
                 <div class="col-md-10 col-md-offset-1 cbp-so-side cbp-so-side-top">
                     <div class="heading">
-                        <h4>How it work</h4>
+                        <h4>Как это работает</h4>
+
                         <p>
-                            Eam facer elaboraret ea, ad eos nullam consulatu maiestatis. Eum mazim simul ne, dicta mnesarchum duo no, ex nec graece verear. Quodsi mentitum iudicabit ut vel, nam suscipiantur definitionem delicatissimi in. Harum accusata at pro, mea ne enim probo mediocrem voluptua ponderum phaedrum.
+                            Например, вы можете заказать себе стенд для хранения документов и ваш бухгалтер будет иметь
+                            доступ к 1 типу документов, а ваш секретарь к другомуу.
+                            Или же это может быть ваш домашний стенд с документами или же кухня, в которой нужно
+                            поставить замки на дверцы с ножами, чтобы ваши дети случайно не поранились
                         </p>
                     </div>
                 </div>
@@ -194,15 +212,17 @@
                 <div class="col-md-12">
                     <div class="work-it-wrapper">
                         <span class="circle-top"></span>
+
                         <div class="work-it-contain on-right cbp-so-section">
                             <div class="work-it-icon">
                                 <i class="icon-shopping-cart"></i>
                             </div>
                             <div class="work-it-text cbp-so-side cbp-so-side-right">
-                                <h5>Purchase via themforest</h5>
+                                <h5>Дешевизна производства</h5>
+
                                 <p>
-                                    Id legendos splendide qui, errem causae molestiae at pri, natum san forensibus cum at. Mei in omittam iudicabit, te sonet fastidii detracto qui. Pro nobis fabulas gloriatur. Pri sumo phaedrum cu blandit corrumpit pertinacia.
-                                </p>
+                                    Из-за того, что мы используем небольшое количество материалов, производство данного
+                                    изделия не обладает заоблочными затратами!</p>
                             </div>
                         </div>
 
@@ -211,10 +231,10 @@
                                 <i class="icon-cloud-download"></i>
                             </div>
                             <div class="work-it-text cbp-so-side cbp-so-side-left">
-                                <h5>Download template</h5>
-                                <p>
-                                    Id legendos splendide qui, errem causae molestiae at pri, natum san forensibus cum at. Mei in omittam iudicabit, te sonet fastidii detracto qui. Pro nobis fabulas gloriatur. Pri sumo phaedrum cu blandit corrumpit pertinacia.
-                                </p>
+                                <h5>Облачное хранилище</h5>
+
+                                <p>Вся ваша информация хранится в облачном сервисе. Благодаря этому, вы можете получить
+                                    доступ к системе из любой точки мира и не беспокоится за ее сохранность.</p>
                             </div>
                         </div>
 
@@ -223,9 +243,10 @@
                                 <i class="icon-wrench"></i>
                             </div>
                             <div class="work-it-text cbp-so-side cbp-so-side-right">
-                                <h5>Customize to website</h5>
-                                <p>
-                                    Id legendos splendide qui, errem causae molestiae at pri, natum san forensibus cum at. Mei in omittam iudicabit, te sonet fastidii detracto qui. Pro nobis fabulas gloriatur. Pri sumo phaedrum cu blandit corrumpit pertinacia.
+                                <h5>Передовые технологии</h5>
+
+                                <p>Мы используем новейшие технологии, поэтому данное устройство является компактным и
+                                    легко встраиваемым в производство.
                                 </p>
                             </div>
                         </div>
@@ -235,9 +256,10 @@
                                 <i class="icon-thumbs-up"></i>
                             </div>
                             <div class="work-it-text cbp-so-side cbp-so-side-left">
-                                <h5>Enjoy your website</h5>
-                                <p>
-                                    Id legendos splendide qui, errem causae molestiae at pri, natum san forensibus cum at. Mei in omittam iudicabit, te sonet fastidii detracto qui. Pro nobis fabulas gloriatur. Pri sumo phaedrum cu blandit corrumpit pertinacia.
+                                <h5>Польза обществу</h5>
+
+                                <p>Данная технология применима в различных сферах деятельности человека и принесет много
+                                    пользы обществу.
                                 </p>
                             </div>
                         </div>
@@ -254,10 +276,16 @@
                 <div class="row cbp-so-section">
                     <div class="col-md-10 col-md-offset-1 cbp-so-side cbp-so-side-top">
                         <h4>Для чего это нужно?</h4>
+
                         <p>
-                            Система хранения Smart Security Cases обеспечивает управление доступом к различным предметам.
-                        <li>Вы можете хранить особо важные документы в тех стендах, которые смогут открыть только определенные люди.</li>
-                        <li>Вы можете заблокировать от детей дверцы шкафчиков, в которых хранятся режущие предметы или лекарства.</li>
+                            Система хранения Smart Security Cases обеспечивает управление доступом к различным
+                            предметам.
+                        <li>Вы можете хранить особо важные документы в тех стендах, которые смогут открыть только
+                            определенные люди.
+                        </li>
+                        <li>Вы можете заблокировать от детей дверцы шкафчиков, в которых хранятся режущие предметы или
+                            лекарства.
+                        </li>
                         <li>Вы можете ограничить доступ к ящикам со своими личными вещами.</li>
                         </ul></p>
                     </div>
@@ -269,59 +297,47 @@
             <ul class="slides">
                 <li>
                     <div class="image-cap">
-                        <img src="/resources/img/features/img1.png" alt="" />
+                        <img src="/resources/img/features/img1.png" alt=""/>
                     </div>
                     <div class="text-cap">
-                        <h4>Looks great on any device</h4>
+                        <h4>Несколько способов получить доступ</h4>
+
                         <p>
-                            Ullam id dolor id nibh ultricies vehicula ut id elit. Aenean eudo leo quam pellentesque ornare sem lacinia quam venenatis.
+                            Получить доступ к различным объектам можно при помощи: клавиатуры,смартфона.
                         </p>
-                        <a href="#" class="text-link">Learn more</a>
                     </div>
-                    <img src="/resources/img/features/bg.jpg" alt="" />
+                    <img src="/resources/img/features/bg.jpg" alt=""/>
                 </li>
                 <li>
                     <div class="image-cap">
-                        <img src="/resources/img/features/img3.png" alt="" />
+                        <img src="/resources/img/features/img3.png" alt=""/>
                     </div>
                     <div class="text-cap">
-                        <h4>Super flat and modern design</h4>
+                        <h4>Удобность управления системой</h4>
+
                         <p>
-                            Ullam id dolor id nibh ultricies vehicula ut id elit. Aenean eudo leo quam pellentesque ornare sem lacinia quam venenatis.
+                            Web интерфейс предназначен для администратора, а мобильная версия для пользователей.
                         </p>
-                        <a href="#" class="text-link">Learn more</a>
                     </div>
-                    <img src="/resources/img/features/bg1.jpg" alt="" />
+                    <img src="/resources/img/features/bg1.jpg" alt=""/>
                 </li>
                 <li>
                     <div class="image-cap">
-                        <img src="/resources/img/features/img2.png" alt="" />
+                        <img src="/resources/img/features/img4.png" alt=""/>
                     </div>
                     <div class="text-cap">
-                        <h4>Suitable for web maketing</h4>
+                        <h4>Поддерживания любого вида устройства</h4>
+
                         <p>
-                            Ullam id dolor id nibh ultricies vehicula ut id elit. Aenean eudo leo quam pellentesque ornare sem lacinia quam venenatis.
+                            Данной системой можно управлять с любого устройства через web интерфейс из любой точки мира.
                         </p>
-                        <a href="#" class="text-link">Learn more</a>
                     </div>
-                    <img src="/resources/img/features/bg2.jpg" alt="" />
-                </li>
-                <li>
-                    <div class="image-cap">
-                        <img src="/resources/img/features/img4.png" alt="" />
-                    </div>
-                    <div class="text-cap">
-                        <h4>Very easy to customize</h4>
-                        <p>
-                            Ullam id dolor id nibh ultricies vehicula ut id elit. Aenean eudo leo quam pellentesque ornare sem lacinia quam venenatis.
-                        </p>
-                        <a href="#" class="text-link">Learn more</a>
-                    </div>
-                    <img src="/resources/img/features/bg3.jpg" alt="" />
+                    <img src="/resources/img/features/bg3.jpg" alt=""/>
                 </li>
             </ul>
         </div>
     </section>
+
 
     <footer>
         <div class="container">
@@ -332,10 +348,11 @@
                         <a href="#" class="social-link cbp-so-side cbp-so-side-left"><i class="icon-twitter"></i></a>
                         <a href="#" class="social-link cbp-so-side cbp-so-side-left"><i class="icon-linkedin"></i></a>
                         <a href="#" class="social-link cbp-so-side cbp-so-side-right"><i class="icon-pinterest"></i></a>
-                        <a href="#" class="social-link cbp-so-side cbp-so-side-right"><i class="icon-google-plus"></i></a>
+                        <a href="#" class="social-link cbp-so-side cbp-so-side-right"><i
+                                class="icon-google-plus"></i></a>
                         <a href="#" class="social-link cbp-so-side cbp-so-side-right"><i class="icon-rss"></i></a>
                     </div>
-                    <p class="cbp-so-side cbp-so-side-bottom">2015 &copy; Copyright | <a href="http://marketolog.me/shablony/shablony_landing_page/">Универсальные parallax шаблоны landing page</a></p>
+                    <p class="cbp-so-side cbp-so-side-bottom">2015 IOT Хакатон</p>
                 </div>
             </div>
         </div>
